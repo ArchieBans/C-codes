@@ -1,0 +1,22 @@
+Archit Kumar
+V00875990.
+Report File LLFS.
+
+Design.
+
+I have used 31 blocks for my workings of the file system. When you initialize() the disk you see more details on that.
+Currently with one block pointer for each group the max file size system can store is 10 blocks or 5120 bytes. The groups are nothing
+but array pointer storing the block nums that has data for that node. There are 15 blocks assigned to the checkpoint functionality that 
+saves the file system from crashes. Those 15 blocks contains the checkpoints inodes, directory and free block vector.
+
+Implementation decisions and tradeoff.
+
+Well becuase there was not much said about the indirect pointer so I have left the functionality out the tests. But in an effort to increase
+the storage of max file size a functionality has been put in the system that can store 20 datablocks. More that 10,000 bytes. But the read is no there
+yet for this function.
+It was very challenging on how to divide the space for directory and inodes. Currently in the system there are 96 inodes and 64 directory entries.There are 
+very small numbers but the do work what they are supposed to do. The main tradeoff I feel is that not having enough space allocated for the inodes. If there 
+are more inodes then system can store much more. It's NTFS everything is connected and max size if 256Terbabytes of that system. But for my version of LLFS
+it is 5120 bytes.
+
+I want to thank the instructor for exposing us to this neat assignment. It gave me a lot of prespective on what is actually going on with my machine.
